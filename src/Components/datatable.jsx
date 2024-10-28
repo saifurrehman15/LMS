@@ -191,7 +191,7 @@ export function DataTable() {
               .filter((column) => column.getCanHide())
               .map((column) => (
                 <DropdownMenuCheckboxItem
-                  key={column.id}
+                  key={column.id} // Key added here
                   className="capitalize"
                   checked={column.getIsVisible()}
                   onCheckedChange={(value) => column.toggleVisibility(!!value)}
@@ -206,9 +206,9 @@ export function DataTable() {
         <Table>
           <TableHeader>
             {table.getHeaderGroups().map((headerGroup) => (
-              <TableRow key={headerGroup.id}>
+              <TableRow key={headerGroup.id}> {/* Key added here */}
                 {headerGroup.headers.map((header) => (
-                  <TableHead key={header.id}>
+                  <TableHead key={header.id}> {/* Key added here */}
                     {header.isPlaceholder
                       ? null
                       : flexRender(
@@ -224,11 +224,11 @@ export function DataTable() {
             {table.getRowModel().rows.length ? (
               table.getRowModel().rows.map((row) => (
                 <TableRow
-                  key={row.id}
+                  key={row.id} // Key is correctly assigned here
                   data-state={row.getIsSelected() && "selected"}
                 >
                   {row.getVisibleCells().map((cell) => (
-                    <TableCell key={cell.id}>
+                    <TableCell key={cell.id}> {/* Key added here */}
                       {flexRender(
                         cell.column.columnDef.cell,
                         cell.getContext()
