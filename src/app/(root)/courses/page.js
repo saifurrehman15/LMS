@@ -1,7 +1,7 @@
 import FormPage from "@/Components/form";
 
 async function Courses() {
-  const url = await fetch("http://localhost:3000/api/courses");
+  const url = await fetch("http://localhost:3001/api/courses");
   const get = await url.json();
   console.log(get);
   return (

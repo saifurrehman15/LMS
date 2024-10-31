@@ -183,7 +183,7 @@ const columns = [
   },
 ];
 
-export function DataTable() {
+export function TrainerTable() {
   const [sorting, setSorting] = useState([]);
   const [columnFilters, setColumnFilters] = useState([]);
   const [columnVisibility, setColumnVisibility] = useState({});

@@ -35,35 +35,35 @@ import {
 const data = [
   {
     id: "m5gr84i9",
-    firstName: "Joe",
-    lastName: "Doe",
-    education: "BS CS",
-    cnic: "42301-3344733-1",
-    gender: "Male",
+    batchName: "Batch A",
+    trainer: "Sophie Devine",
+    totalstu: 12,
+    course: "Web & App Development",
+    gender: "Female",
     address: "143 street",
-    status: "success",
+    status: "completed",
     email: "Joe@yahoo.com",
   },
   {
     id: "3u1reuv4",
-    firstName: "Doe",
-    lastName: "Doe",
-    education: "Software Engineer",
-    cnic: "42303-3344443-1",
+    batchName: "Batch B",
+    trainer: "John Doe",
+    totalstu: 12,
+    course: "Python",
     gender: "Male",
     address: "125 street",
-    status: "success",
+    status: "ongoing",
     email: "Doe@gmail.com",
   },
   {
     id: "derv1ws0",
-    firstName: "Sophie",
-    lastName: "Devine",
-    education: "Data Scientist",
+    batchName: "Batch C",
+    trainer: "James Smith",
+    totalstu: 12,
     address: "123 street",
-    cnic: "42304-3348933-1",
-    gender: "Female",
-    status: "processing",
+    course: "AI & Chatbot",
+    gender: "Male",
+    status: "pending",
     email: "Sophie@gmail.com",
   },
 ];
@@ -91,61 +91,47 @@ const columns = [
     enableHiding: false,
   },
   {
-    accessorKey: "email",
+    accessorKey: "batchName",
     header: ({ column }) => (
       <Button
         variant="ghost"
         onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
         className="flex items-center space-x-2"
       >
-        <span>Email</span>
+        <span>Batch Name</span>
         <ArrowUpDown className="h-4 w-4" />
       </Button>
     ),
-    cell: ({ row }) => <div className="lowercase">{row.getValue("email")}</div>,
+    cell: ({ row }) => <div>{row.getValue("batchName")}</div>,
   },
 
   {
-    accessorKey: "firstName",
-    header: () => <div className="text-left">First Name</div>,
+    accessorKey: "trainer",
+    header: () => <div className="text-left">Trainers</div>,
     cell: ({ row }) => (
-      <div className="text-left font-medium">{row.getValue("firstName")}</div>
+      <div className="text-left font-medium">{row.getValue("trainer")}</div>
     ),
   },
   {
-    accessorKey: "lastName",
-    header: () => <div className="text-left">Last Name</div>,
+    accessorKey: "totalstu",
+    header: () => <div className="text-left">No of Students</div>,
     cell: ({ row }) => (
-      <div className="text-left font-medium">{row.getValue("lastName")}</div>
+      <div className="text-center font-medium">{row.getValue("totalstu")}</div>
     ),
   },
   {
-    accessorKey: "education",
-    header: () => <div className="text-left">Education</div>,
-    cell: ({ row }) => (
-      <div className="text-left font-medium">{row.getValue("education")}</div>
+    accessorKey: "course",
+    header: ({ column }) => (
+      <Button
+        variant="ghost"
+        onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
+        className="flex items-center space-x-2"
+      >
+        <span>Courses</span>
+        <ArrowUpDown className="h-4 w-4" />
+      </Button>
     ),
-  },
-  {
-    accessorKey: "cnic",
-    header: () => <div className="text-left">Cnic</div>,
-    cell: ({ row }) => (
-      <div className="text-left font-medium">{row.getValue("cnic")}</div>
-    ),
-  },
-  {
-    accessorKey: "gender",
-    header: () => <div className="text-left">Gender</div>,
-    cell: ({ row }) => (
-      <div className="text-left font-medium">{row.getValue("gender")}</div>
-    ),
-  },
-  {
-    accessorKey: "address",
-    header: () => <div className="text-left">Address</div>,
-    cell: ({ row }) => (
-      <div className="text-left font-medium">{row.getValue("address")}</div>
-    ),
+    cell: ({ row }) => <div>{row.getValue("course")}</div>,
   },
   {
     accessorKey: "status",
@@ -183,7 +169,7 @@ const columns = [
   },
 ];
 
-export function DataTable() {
+export function BatchesTables() {
   const [sorting, setSorting] = useState([]);
   const [columnFilters, setColumnFilters] = useState([]);
   const [columnVisibility, setColumnVisibility] = useState({});
@@ -212,10 +198,18 @@ export function DataTable() {
     <div className="w-full">
       <div className="flex items-center py-4 space-x-4">
         <Input
-          placeholder="Filter emails..."
-          value={table.getColumn("email")?.getFilterValue() ?? ""}
+          placeholder="Filter Batch Name"
+          value={table.getColumn("batchName")?.getFilterValue() ?? ""}
           onChange={(event) =>
-            table.getColumn("email")?.setFilterValue(event.target.value)
+            table.getColumn("batchName")?.setFilterValue(event.target.value)
+          }
+          className="max-w-xs"
+        />
+        <Input
+          placeholder="Filter Courses"
+          value={table.getColumn("course")?.getFilterValue() ?? ""}
+          onChange={(event) =>
+            table.getColumn("course")?.setFilterValue(event.target.value)
           }
           className="max-w-xs"
         />
