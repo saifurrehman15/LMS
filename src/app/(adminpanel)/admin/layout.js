@@ -4,7 +4,13 @@ import Header from "@/Components/header";
 import "../../globals.css";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Users, BookOpen, Home, GraduationCap, ClipboardList } from "lucide-react";
+import {
+  Users,
+  BookOpen,
+  Home,
+  GraduationCap,
+  ClipboardList,
+} from "lucide-react";
 
 export default function Layout({ children }) {
   const pathname = usePathname();
@@ -20,7 +26,10 @@ export default function Layout({ children }) {
   return (
     <html lang="en">
       <head>
-        <title>{pages.find(page => page.path === pathname)?.label || "My Page Title"}</title>
+        <title>
+          {pages.find((page) => page.path === pathname)?.label ||
+            "My Page Title"}
+        </title>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta name="description" content="Description of my page." />
       </head>
@@ -32,7 +41,12 @@ export default function Layout({ children }) {
           <nav className="h-screen w-60 dashboard">
             <ul className="mt-20 space-y-4">
               {pages.map((page) => (
-                <Link key={page.label} href={page.path} aria-label={page.label} className="links flex items-center space-x-2">
+                <Link
+                  key={page.label}
+                  href={page.path}
+                  aria-label={page.label}
+                  className="links flex items-center space-x-2"
+                >
                   <li className={pathname === page.path ? "active" : ""}>
                     {page.icon} {page.label}
                   </li>

@@ -1,5 +1,5 @@
 import Header from "@/Components/header";
-import "../globals.css";
+import '../globals.css';
 
 export default function Layout({ children }) {
   return (
@@ -7,7 +7,7 @@ export default function Layout({ children }) {
       <head>
         <title>My Page Title</title> {/* Consider making this dynamic */}
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <meta name="description" content="Description of my page." />{" "}
+        <meta name="description" content="Description of my page." />
       </head>
       <body>
         <div>

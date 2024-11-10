@@ -2,7 +2,7 @@ import Link from "next/link";
 
 function Header() {
   return (
-    <div className="header bg-blue-500">
+    <div className="header bg-black text-white">
       <div>logo</div>
       <nav className="navigation">
         <ul>
