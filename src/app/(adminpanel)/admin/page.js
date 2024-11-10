@@ -11,12 +11,12 @@ import {
   CardDescription,
   CardHeader,
   CardTitle,
-} from "../../../Components/ui/card";
+} from "../../../Components/ui/card.jsx";
 import {
   ChartContainer,
   ChartTooltip,
   ChartTooltipContent,
-} from "../../../Components/ui/chart";
+} from "../../../Components/ui/chart.jsx";
 
 export default function Admin() {
   const chartData = [
